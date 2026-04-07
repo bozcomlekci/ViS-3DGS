@@ -1,0 +1,15 @@
+.vscode/**
+.vscode-test/**
+out/**
+node_modules/**
+src/**
+scripts/**
+esbuild.mjs
+.gitignore
+tsconfig.json
+**/*.map
+**/*.ts
+test.html
+splat.ply
+media/*.ply
+**/.tmp_gv/**

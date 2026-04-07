@@ -1,0 +1,71 @@
+{
+  "name": "vis-3dgs-viewer",
+  "displayName": "ViS-3DGS - 3D Gaussian Splatting Viewer",
+  "description": "View 3D Gaussian Splat files (.ply, .splat, .gsplat) directly in VSCode using the SuperSplat viewer",
+  "version": "0.1.1",
+  "publisher": "batuoz",
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Visualization",
+    "Other"
+  ],
+  "keywords": [
+    "3d gaussian splatting",
+    "splat",
+    "ply",
+    "3dgs",
+    "point cloud",
+    "viewer",
+    "supersplat"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bozcomlekci/ViS-3DGS.git"
+  },
+  "main": "./dist/extension.js",
+  "contributes": {
+    "capabilities": {
+      "untrustedWorkspaces": {
+        "supported": true
+      }
+    },
+    "customEditors": [
+      {
+        "viewType": "vis-3dgs.viewer",
+        "displayName": "ViS-3DGS Viewer",
+        "selector": [
+          { "filenamePattern": "*.ply" },
+          { "filenamePattern": "*.splat" },
+          { "filenamePattern": "*.gsplat" }
+        ]
+      }
+    ],
+    "configuration": {
+      "title": "ViS-3DGS",
+      "properties": {
+        "vis-3dgs.backgroundColor": {
+          "type": "string",
+          "default": "#000c18",
+          "description": "Default background color for the viewer."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "node esbuild.mjs",
+    "build": "npm run compile",
+    "watch": "node esbuild.mjs --watch",
+    "package": "node scripts/package-vsix.js",
+    "setup": "bash scripts/setup-supersplat.sh"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.20.0",
+    "typescript": "^5.3.0"
+  }
+}
